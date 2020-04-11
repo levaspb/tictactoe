@@ -66,7 +66,6 @@ def winner(board):
 		if i[0] == i[1] == i[2] and i[0] != EMPTY:
 			return i[0]
 	for i in range(len(board)):
-		#print(board[0][i], board[1][i], board[2][i])
 		if board[0][i] == board[1][i] == board[2][i] and board[0][i] != EMPTY:
 			return board[0][i]
 	if board[0][0] == board[1][1] == board[2][2] and board[0][0] != EMPTY:
@@ -110,22 +109,17 @@ def max_value(board, alpha, beta):
 	Find maximum value of all possible actions on the board. Recursive.
 	"""
 	minv = 2
-	#print('Checking MAX move... ', board, alpha, beta)
 	if terminal(board):
-		#print('MAX FOUND: ', utility(board))
 		return utility(board)
 	else:
 		v = 2
 		for action in actions(board):
 			v = min(v, min_value(result(board, action), alpha, beta))
 			if v < minv:
-				#print('v less than minv, so minv = v: ', minv, v)
 				minv = v
 			if minv <= alpha:
-				#print('alpha', alpha, beta, minv)
 				return minv
 			if minv < beta:
-				#print('minv less than beta, so beta = minv: ', beta, minv)
 				beta = minv
 		return v
 
@@ -135,22 +129,18 @@ def min_value(board, alpha, beta):
 	Find minimum value of all possible actions on the board. Recursive.
 	"""
 	maxv = -2
-	#print('Checking MIN move... ', board, alpha, beta)
+
 	if terminal(board):
-		#print('MIN FOUND: ', utility(board))
 		return utility(board)
 	else:
 		v = -2
 		for action in actions(board):
 			v = max(v, max_value(result(board, action), alpha, beta))
 			if v > maxv:
-				#print('v more than maxv, so maxv = v: ', maxv, v)
 				maxv = v
 			if maxv >= beta:
-				#print('beta', alpha, beta, v)
 				return maxv
 			if maxv > alpha:
-				#print('maxv more than alpha, so alpha = maxv: ', alpha, maxv)
 				alpha = maxv
 		return v
 
@@ -169,7 +159,6 @@ def minimax(board):
 		else:
 			value = min_value(result(board, action), -2, 2)
 			array[action] = value
-		#print('RESULTS: ', array)
 	if player(board) == X:
 		return max(array, key=lambda unit: array[unit])
 	else:

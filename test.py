@@ -126,44 +126,44 @@ def utility(board):
 
 def max_value(board, alpha, beta):
 	minv = 2
-	print('Checking MAX move... ', board, alpha, beta)
+	#print('Checking MAX move... ', board, alpha, beta)
 	if terminal(board):
-		print('MAX FOUND: ', utility(board))
+		#print('MAX FOUND: ', utility(board))
 		return utility(board)
 	else:
 		v = 2
 		for action in actions(board):
 			v = min(v, min_value(result(board, action), alpha, beta))
 			if v < minv:
-				print('v less than minv, so minv = v: ', minv, v)
+				#print('v less than minv, so minv = v: ', minv, v)
 				minv = v
 			if minv <= alpha:
-				print('alpha', alpha, beta, minv)
+				#print('alpha', alpha, beta, minv)
 				return minv
 			if minv < beta:
-				print('minv less than beta, so beta = minv: ', beta, minv)
+				#print('minv less than beta, so beta = minv: ', beta, minv)
 				beta = minv
 		return v
 
 
 def min_value(board, alpha, beta):
 	maxv = -2
-	print('Checking MIN move... ', board, alpha, beta)
+	#print('Checking MIN move... ', board, alpha, beta)
 	if terminal(board):
-		print('MIN FOUND: ', utility(board))
+		#print('MIN FOUND: ', utility(board))
 		return utility(board)
 	else:
 		v = -2
 		for action in actions(board):
 			v = max(v, max_value(result(board, action), alpha, beta))
 			if v > maxv:
-				print('v more than maxv, so maxv = v: ', maxv, v)
+				#print('v more than maxv, so maxv = v: ', maxv, v)
 				maxv = v
 			if maxv >= beta:
-				print('beta', alpha, beta, v)
+				#print('beta', alpha, beta, v)
 				return maxv
 			if maxv > alpha:
-				print('maxv more than alpha, so alpha = maxv: ', alpha, maxv)
+				#print('maxv more than alpha, so alpha = maxv: ', alpha, maxv)
 				alpha = maxv
 		return v
 
@@ -181,7 +181,7 @@ def minimax(board):
 		else:
 			value = min_value(result(board, action), -2, 2)
 			array[action] = value
-		print('RESULTS: ', array)
+		#print('RESULTS: ', array)
 	if player(board) == X:
 		return max(array, key=lambda unit: array[unit])
 	else:
