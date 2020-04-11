@@ -1,6 +1,6 @@
 # Implementation of Minimax algorithm for Tic-Tac-Toe game
 
-## (with and without Alpha-Beta Pruning)
+#### (with and without Alpha-Beta Pruning)
 
 The idea for Alpha-Beta Pruning was taken from:
 
