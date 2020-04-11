@@ -2,7 +2,7 @@
 
 #### (with and without Alpha-Beta Pruning)
 
-The idea for Alpha-Beta Pruning was taken from:
+Explanation of algorithm:
 
 https://stackabuse.com/minimax-and-alpha-beta-pruning-in-python/
 
